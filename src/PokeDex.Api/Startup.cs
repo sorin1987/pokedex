@@ -10,28 +10,35 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using PokeDex.Api.DependencyInjection;
+using PokeDex.Api.Services;
 using PokeDex.Api.Settings;
+using Polly;
 using Swashbuckle;
 
 namespace PokeDex.Api
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSwaggerGen(x =>
-            {
-                x.SwaggerDoc("v1", new OpenApiInfo {Title = "PokeDex API", Version = "v1"});
-            });
+            services.RegisterSwagger(Program.ApplicationName);
+
+            var pokemonApiSettings = new PokemonApiSettings();
+            _configuration.GetSection(nameof(PokemonApiSettings)).Bind(pokemonApiSettings);
+            services.AddPokemonApiHttpClient(pokemonApiSettings);
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddSingleton<IPokemonService, PokemonService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,24 +49,11 @@ namespace PokeDex.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            var swaggerSettings = new SwaggerSettings();
-            Configuration.GetSection(nameof(SwaggerSettings)).Bind(swaggerSettings);
-
-            app.UseSwagger(option => { option.RouteTemplate = swaggerSettings.JsonRoute; });
-
-            app.UseSwaggerUI(option =>
-            {
-                option.SwaggerEndpoint(swaggerSettings.UiEndpoint, swaggerSettings.Description);
-            });
-
+            app.UseSwagger(_configuration);
             app.UseRouting();
-
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

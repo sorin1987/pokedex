@@ -22,5 +22,9 @@ namespace PokeDex.Api
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+        public static string ApplicationName =>
+            Environment.GetEnvironmentVariable("DOTNET_APPLICATIONNAME") ??
+            Environment.GetEnvironmentVariable("ASPNETCORE_APPLICATIONNAME") ??
+            "PokeDex API";
     }
 }

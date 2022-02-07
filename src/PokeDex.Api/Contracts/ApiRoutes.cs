@@ -2,13 +2,12 @@
 {
     public static class ApiRoutes
     {
-        private const string PokemonNameRouteParameter = "pokemonName";
-
         public static class Pokemon
         {
-            public const string Root = "pokemon";
-            public const string GetByName = PokemonNameRouteParameter;
-            public const string GetTranslatedByName = "translated/" + PokemonNameRouteParameter;
+            private const string PokemonNameRouteParameter = "{pokemonName}";
+            public const string Root = "/pokemon";
+            public const string GetByName = Root + "/" + PokemonNameRouteParameter;
+            public const string GetTranslatedByName = Root + "translated/" + PokemonNameRouteParameter;
         }
     }
 }
