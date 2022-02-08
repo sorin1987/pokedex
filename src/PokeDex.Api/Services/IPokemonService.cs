@@ -1,6 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
-using PokeDex.Api.Domain;
+using PokeDex.Api.Domain.Pokemon;
 
 namespace PokeDex.Api.Services
 {

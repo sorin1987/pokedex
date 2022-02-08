@@ -1,20 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using PokeDex.Api.DependencyInjection;
 using PokeDex.Api.Services;
 using PokeDex.Api.Settings;
-using Polly;
-using Swashbuckle;
+using PokeDex.Api.TranslationProviders;
 
 namespace PokeDex.Api
 {
@@ -32,13 +24,18 @@ namespace PokeDex.Api
             services.AddControllers();
             services.RegisterSwagger(Program.ApplicationName);
 
-            var pokemonApiSettings = new PokemonApiSettings();
-            _configuration.GetSection(nameof(PokemonApiSettings)).Bind(pokemonApiSettings);
-            services.AddPokemonApiHttpClient(pokemonApiSettings);
+            services.AddApiHttpClient(_configuration, "PokemonApiSettings", "PokemonApi");
+            services.AddApiHttpClient(_configuration, "FunTranslationsApiSettings", "TranslationsApi");
 
             services.AddAutoMapper(typeof(Startup));
 
+            services.AddCacheRegistration(_configuration);
+
             services.AddSingleton<IPokemonService, PokemonService>();
+            services.AddSingleton<ITranslationService, TranslationService>();
+            services.AddSingleton<RetryPolicies, RetryPolicies>();
+            services.AddSingleton<CircuitBreakerSettings, CircuitBreakerSettings>();
+            services.AddSingleton<ITranslationProviderFactory, TranslationProviderFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,11 +1,14 @@
-﻿using System.Threading;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Threading;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using AutoMapper;
+using PokeDex.Api.Cache;
 using PokeDex.Api.Contracts;
 using PokeDex.Api.Exceptions;
 using PokeDex.Api.Responses;
 using PokeDex.Api.Services;
+using PokeDex.Api.TranslationProviders;
 
 namespace PokeDex.Api.Controllers
 {
@@ -14,16 +17,19 @@ namespace PokeDex.Api.Controllers
     public class PokemonController : ControllerBase
     {
         private readonly IPokemonService _pokemonService;
+        private readonly ITranslationProviderFactory _translationProviderFactory;
         private readonly IMapper _mapper;
 
-        public PokemonController(IPokemonService pokemonService, IMapper mapper)
+        public PokemonController(IPokemonService pokemonService, IMapper mapper, ITranslationProviderFactory translationProviderFactory)
         {
             _pokemonService = pokemonService;
             _mapper = mapper;
+            _translationProviderFactory = translationProviderFactory;
         }
 
         [HttpGet(ApiRoutes.Pokemon.GetByName)]
-        public async Task<IActionResult> GetPokemonAsync([FromRoute]string pokemonName, CancellationToken cancellationToken)
+        [Cached(600)]
+        public async Task<IActionResult> GetPokemonAsync([FromRoute, Required] string pokemonName, CancellationToken cancellationToken)
         {
             try
             {
@@ -38,9 +44,24 @@ namespace PokeDex.Api.Controllers
         }
 
         [HttpGet(ApiRoutes.Pokemon.GetTranslatedByName)]
-        public async Task<IActionResult> GetTranslatedPokemonAsync([FromRoute]string pokemonName, CancellationToken cancellationToken)
+        [Cached(600)]
+        public async Task<IActionResult> GetTranslatedPokemonAsync([FromRoute, Required] string pokemonName, CancellationToken cancellationToken)
         {
-            return Ok();
+            try
+            {
+                var pokemon = await _pokemonService.GetPokemonByNameAsync(pokemonName, cancellationToken);
+                var pokemonResponse = _mapper.Map<PokemonResponse>(pokemon);
+                
+                var translationProvider = _translationProviderFactory.GetTranslationProvider(pokemonResponse);
+                var translatedDescription = await _translationProviderFactory.ApplyTranslationAsync(translationProvider, pokemonResponse.Description, cancellationToken);
+                pokemonResponse.Description = translatedDescription;
+                
+                return Ok(pokemonResponse);
+            }
+            catch (PokemonApiException)
+            {
+                return NotFound();
+            }
         }
     }
 }

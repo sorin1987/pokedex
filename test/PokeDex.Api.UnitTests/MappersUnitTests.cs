@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using AutoFixture;
 using AutoMapper;
 using FluentAssertions;
-using PokeDex.Api.Domain;
+using PokeDex.Api.Domain.Pokemon;
 using PokeDex.Api.Mapping;
 using PokeDex.Api.Responses;
 using Xunit;

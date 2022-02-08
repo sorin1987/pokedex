@@ -1,6 +1,6 @@
 using System.Linq;
 using AutoMapper;
-using PokeDex.Api.Domain;
+using PokeDex.Api.Domain.Pokemon;
 using PokeDex.Api.Responses;
 
 namespace PokeDex.Api.Mapping

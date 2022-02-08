@@ -2,7 +2,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using PokeDex.Api.Domain;
+using PokeDex.Api.Domain.Pokemon;
 using PokeDex.Api.Exceptions;
 
 namespace PokeDex.Api.Services

@@ -1,6 +1,8 @@
 using System;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using PokeDex.Api.Services;
 using PokeDex.Api.Settings;
 using PokeDex.Api.Utils;
 using Polly;
@@ -22,14 +24,31 @@ namespace PokeDex.Api.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddPokemonApiHttpClient(this IServiceCollection services, PokemonApiSettings settings)
+        public static IServiceCollection AddApiHttpClient(this IServiceCollection services, IConfiguration configuration, string settingsSectionName, string clientName)
         {
-            services.AddHttpClient("PokemonApi",
-                    client => { client.BaseAddress = new Uri(settings.BaseAddress); })
+            var random = new Random();
+            var apiClientSettings = new ApiClientSettings();
+            configuration.GetSection(settingsSectionName).Bind(apiClientSettings);
+            services.AddHttpClient(clientName, client => { client.BaseAddress = new Uri(apiClientSettings.BaseAddress); })
                 .AddTransientHttpErrorPolicy(x =>
-                    x.WaitAndRetryAsync(settings.RetrySettings.MaxRetries,
-                        times => TimeSpan.FromMilliseconds(times * settings.RetrySettings.WaitBetweenRetriesFactorMilliseconds)));
+                    x.WaitAndRetryAsync(apiClientSettings.RetrySettings.MaxRetries,
+                        times => TimeSpan.FromSeconds(Math.Pow(2, times)) + TimeSpan.FromMilliseconds(random.Next(0,1000))));
             
+            return services;
+        }
+
+        public static IServiceCollection AddCacheRegistration(this IServiceCollection services, IConfiguration configuration)
+        {
+            var redisCacheSettings = new RedisCacheSettings();
+            configuration.GetSection(nameof(RedisCacheSettings)).Bind(redisCacheSettings);
+            services.AddSingleton(redisCacheSettings);
+
+            if (redisCacheSettings.Enabled)
+            {
+                services.AddStackExchangeRedisCache(options => options.Configuration = redisCacheSettings.ConnectionString);
+                services.AddSingleton<IResponseCacheService, ResponseCacheService>();
+            }
+
             return services;
         }
     }

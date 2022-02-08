@@ -7,7 +7,7 @@
             private const string PokemonNameRouteParameter = "{pokemonName}";
             public const string Root = "/pokemon";
             public const string GetByName = Root + "/" + PokemonNameRouteParameter;
-            public const string GetTranslatedByName = Root + "translated/" + PokemonNameRouteParameter;
+            public const string GetTranslatedByName = Root + "/translated/" + PokemonNameRouteParameter;
         }
     }
 }
