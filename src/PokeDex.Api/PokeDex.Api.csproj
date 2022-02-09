@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain" />
+    <ProjectReference Include="..\PokeDex.Api.Application\PokeDex.Api.Application.csproj" />
+    <ProjectReference Include="..\PokeDex.Api.Contracts\PokeDex.Api.Contracts.csproj" />
+    <ProjectReference Include="..\PokeDex.Api.Domain\PokeDex.Api.Domain.csproj" />
   </ItemGroup>
 
 

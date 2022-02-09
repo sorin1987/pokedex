@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
-using PokeDex.Api.Settings;
+using PokeDex.Api.Application.Settings;
 using PokeDex.Api.Utils;
 
 namespace PokeDex.Api.DependencyInjection

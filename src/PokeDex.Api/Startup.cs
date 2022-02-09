@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PokeDex.Api.Application;
+using PokeDex.Api.Application.Interfaces;
+using PokeDex.Api.Application.Services;
+using PokeDex.Api.Application.Settings;
+using PokeDex.Api.Application.TranslationProviders;
 using PokeDex.Api.DependencyInjection;
-using PokeDex.Api.Services;
-using PokeDex.Api.Settings;
-using PokeDex.Api.TranslationProviders;
 
 namespace PokeDex.Api
 {

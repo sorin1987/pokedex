@@ -1,7 +1,7 @@
-using System.Linq;
 using AutoMapper;
-using PokeDex.Api.Domain.Pokemon;
-using PokeDex.Api.Responses;
+using PokeDex.Api.Contracts.Responses;
+using PokeDex.Api.Domain.Models.Pokemon;
+using System.Linq;
 
 namespace PokeDex.Api.Mapping
 {

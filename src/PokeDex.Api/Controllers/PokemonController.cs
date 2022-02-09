@@ -1,14 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Threading;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using AutoMapper;
-using PokeDex.Api.Cache;
+using PokeDex.Api.Application.Interfaces;
+using PokeDex.Api.Application.TranslationProviders;
 using PokeDex.Api.Contracts;
-using PokeDex.Api.Exceptions;
-using PokeDex.Api.Responses;
-using PokeDex.Api.Services;
-using PokeDex.Api.TranslationProviders;
+using PokeDex.Api.Contracts.Responses;
+using PokeDex.Api.Domain.Exceptions;
+using PokeDex.Api.Filters;
+using System.ComponentModel.DataAnnotations;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace PokeDex.Api.Controllers
 {

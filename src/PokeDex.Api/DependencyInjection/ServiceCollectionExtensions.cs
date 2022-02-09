@@ -1,11 +1,13 @@
-using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using PokeDex.Api.Services;
-using PokeDex.Api.Settings;
+using PokeDex.Api.Application.Interfaces;
+using PokeDex.Api.Application.Services;
+using PokeDex.Api.Application.Settings;
 using PokeDex.Api.Utils;
 using Polly;
+using System;
+using StackExchange.Redis;
 
 namespace PokeDex.Api.DependencyInjection
 {
@@ -24,16 +26,19 @@ namespace PokeDex.Api.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddApiHttpClient(this IServiceCollection services, IConfiguration configuration, string settingsSectionName, string clientName)
+        public static IServiceCollection AddApiHttpClient(this IServiceCollection services,
+            IConfiguration configuration, string settingsSectionName, string clientName)
         {
             var random = new Random();
             var apiClientSettings = new ApiClientSettings();
             configuration.GetSection(settingsSectionName).Bind(apiClientSettings);
-            services.AddHttpClient(clientName, client => { client.BaseAddress = new Uri(apiClientSettings.BaseAddress); })
+            services.AddHttpClient(clientName,
+                    client => { client.BaseAddress = new Uri(apiClientSettings.BaseAddress); })
                 .AddTransientHttpErrorPolicy(x =>
                     x.WaitAndRetryAsync(apiClientSettings.RetrySettings.MaxRetries,
-                        times => TimeSpan.FromSeconds(Math.Pow(2, times)) + TimeSpan.FromMilliseconds(random.Next(0,1000))));
-            
+                        times => TimeSpan.FromSeconds(Math.Pow(2, times)) +
+                                 TimeSpan.FromMilliseconds(random.Next(0, 1000))));
+
             return services;
         }
 
