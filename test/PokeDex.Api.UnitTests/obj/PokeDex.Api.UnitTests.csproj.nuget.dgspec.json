@@ -1,0 +1,416 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Sorin Stancu\\source\\pokedex\\test\\PokeDex.Api.UnitTests\\PokeDex.Api.UnitTests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Application\\PokeDex.Api.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Application\\PokeDex.Api.Application.csproj",
+        "projectName": "PokeDex.Api.Application",
+        "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Application\\PokeDex.Api.Application.csproj",
+        "packagesPath": "C:\\Users\\Sorin Stancu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sorin Stancu\\source\\pokedex\\NuGet.Config",
+          "C:\\Users\\Sorin Stancu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Contracts\\PokeDex.Api.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Contracts\\PokeDex.Api.Contracts.csproj"
+              },
+              "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Domain\\PokeDex.Api.Domain.csproj": {
+                "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Domain\\PokeDex.Api.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Contracts\\PokeDex.Api.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Contracts\\PokeDex.Api.Contracts.csproj",
+        "projectName": "PokeDex.Api.Contracts",
+        "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Contracts\\PokeDex.Api.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Sorin Stancu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sorin Stancu\\source\\pokedex\\NuGet.Config",
+          "C:\\Users\\Sorin Stancu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Domain\\PokeDex.Api.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Domain\\PokeDex.Api.Domain.csproj",
+        "projectName": "PokeDex.Api.Domain",
+        "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Domain\\PokeDex.Api.Domain.csproj",
+        "packagesPath": "C:\\Users\\Sorin Stancu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sorin Stancu\\source\\pokedex\\NuGet.Config",
+          "C:\\Users\\Sorin Stancu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api\\PokeDex.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api\\PokeDex.Api.csproj",
+        "projectName": "PokeDex.Api",
+        "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api\\PokeDex.Api.csproj",
+        "packagesPath": "C:\\Users\\Sorin Stancu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sorin Stancu\\source\\pokedex\\NuGet.Config",
+          "C:\\Users\\Sorin Stancu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Application\\PokeDex.Api.Application.csproj": {
+                "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Application\\PokeDex.Api.Application.csproj"
+              },
+              "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Contracts\\PokeDex.Api.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Contracts\\PokeDex.Api.Contracts.csproj"
+              },
+              "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Domain\\PokeDex.Api.Domain.csproj": {
+                "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api.Domain\\PokeDex.Api.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.Extensions.Http.Polly": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.22, 3.1.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Sorin Stancu\\source\\pokedex\\test\\PokeDex.Api.UnitTests\\PokeDex.Api.UnitTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sorin Stancu\\source\\pokedex\\test\\PokeDex.Api.UnitTests\\PokeDex.Api.UnitTests.csproj",
+        "projectName": "PokeDex.Api.UnitTests",
+        "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\test\\PokeDex.Api.UnitTests\\PokeDex.Api.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\Sorin Stancu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\test\\PokeDex.Api.UnitTests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sorin Stancu\\source\\pokedex\\NuGet.Config",
+          "C:\\Users\\Sorin Stancu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api\\PokeDex.Api.csproj": {
+                "projectPath": "C:\\Users\\Sorin Stancu\\source\\pokedex\\src\\PokeDex.Api\\PokeDex.Api.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoFixture": {
+              "target": "Package",
+              "version": "[4.17.0, )"
+            },
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.2.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.16.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

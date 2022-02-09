@@ -1,0 +1,25 @@
+version: "3.5"
+
+services:
+  poke-dex-api:
+    container_name: pokedex-api
+    build:
+      context: .
+      dockerfile: dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:5002
+      - RedisCacheSettings:ConnectionString=http://redis
+      - RedisCacheSettings:Enabled=false
+    ports:
+      - 5002:5002
+      
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+      
+  redisUI:
+    image: rediscommander/redis-commander
+    ports:
+      - 8081:8081
