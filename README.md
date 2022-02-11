@@ -11,7 +11,7 @@ Method 2. Caching disabled
   This option starts the api at port 5002 but will not have the caching enabled
   
 ## How to test:
-Once you have the API running you can go to `http://localhost:5000/swagger/index.html` and check the 2 available endpoints and try them from there or from another tool of your choice (Postman, curl etc)
+Once you have the API running you can go to `http://localhost:5000/swagger/index.html` and check the 2 available endpoints and try them from there or from another tool of your choice (Postman, curl etc). You will need to provide an ApiKey header that you can find in the appsettings.
 If you have the caching enabled when the app is started, for the translated endpoint you will not be able to see the circuit break pollicy falling back to the default pokemon description unless you call the endpoint with different pokemon names for multiple calls.
 Once the call is made for a pokemon name that response will be cached for 10 minutes and will be brought from the cache and cannot reach the Translations API throttling mechanism. 
 The rest is pretty simple and requires no explanation.
@@ -19,8 +19,7 @@ The rest is pretty simple and requires no explanation.
 # Notes
 I usually use Refit to create API clients but I got feedback in the past that this was confusing and I thought I would stick with a more classic approach and used IHttpClientFactory instead.
 I spent a limited time on this API so I had to be a little pragmatic with how much I implemented but here are some other things I would have done if this was a real world API or I had more time:
-1. I would have implemented some form of security for my API (ApiKey or JWT token for example)
-2. Provide logging. 
-3. Provide some basic metrics (for example the calls duration to the external APIs etc)
-4. Integration testing and better unit test coverage (for now I wrote unit tests for my services to give you an idea of how I write them and the tools I like to use)
+1. Provide logging. 
+2. Provide some basic metrics (for example the calls duration to the external APIs etc)
+3. Integration testing and better unit test coverage (for now I wrote unit tests for my services to give you an idea of how I write them and the tools I like to use)
 If you wish we can discuss all these points during the next phase of the interview provided I will reach it.
