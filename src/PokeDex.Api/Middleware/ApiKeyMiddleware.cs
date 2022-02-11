@@ -19,6 +19,11 @@ namespace PokeDex.Api.Middleware
 
         public async Task Invoke(HttpContext context)
         {
+            if (context.Request.Path.Value.Contains("swagger"))
+            {
+                await _next(context);
+                return;
+            }
             if (!context.Request.Headers.TryGetValue(ApiKeyHeaderName, out var providedApiKey))
             {
                 context.Response.StatusCode = StatusCodes.Status400BadRequest;
