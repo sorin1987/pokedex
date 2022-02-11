@@ -9,6 +9,7 @@ using PokeDex.Api.Application.Services;
 using PokeDex.Api.Application.Settings;
 using PokeDex.Api.Application.TranslationProviders;
 using PokeDex.Api.DependencyInjection;
+using PokeDex.Api.Middleware;
 
 namespace PokeDex.Api
 {
@@ -25,6 +26,8 @@ namespace PokeDex.Api
         {
             services.AddControllers();
             services.RegisterSwagger(Program.ApplicationName);
+            
+            services.RegisterHealthChecks(_configuration);
 
             services.AddApiHttpClient(_configuration, "PokemonApiSettings", "PokemonApi");
             services.AddApiHttpClient(_configuration, "FunTranslationsApiSettings", "TranslationsApi");
@@ -32,6 +35,10 @@ namespace PokeDex.Api
             services.AddAutoMapper(typeof(Startup));
 
             services.AddCacheRegistration(_configuration);
+            
+            var apiKeySettings = new ApiKeySettings();
+            _configuration.GetSection(nameof(ApiKeySettings)).Bind(apiKeySettings);
+            services.AddSingleton(apiKeySettings);
 
             services.AddSingleton<IPokemonService, PokemonService>();
             services.AddSingleton<ITranslationService, TranslationService>();
@@ -47,6 +54,10 @@ namespace PokeDex.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseHealthChecks("/health");
+
+            app.UseMiddleware<ApiKeyMiddleware>();
 
             app.UseSwagger(_configuration);
             app.UseRouting();

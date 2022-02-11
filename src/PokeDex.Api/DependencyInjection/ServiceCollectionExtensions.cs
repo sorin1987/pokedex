@@ -7,7 +7,6 @@ using PokeDex.Api.Application.Settings;
 using PokeDex.Api.Utils;
 using Polly;
 using System;
-using StackExchange.Redis;
 
 namespace PokeDex.Api.DependencyInjection
 {
@@ -54,6 +53,12 @@ namespace PokeDex.Api.DependencyInjection
                 services.AddSingleton<IResponseCacheService, ResponseCacheService>();
             }
 
+            return services;
+        }
+
+        public static IServiceCollection RegisterHealthChecks(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddHealthChecks();
             return services;
         }
     }
