@@ -17,6 +17,7 @@ Once the call is made for a pokemon name that response will be cached for 10 min
 The rest is pretty simple and requires no explanation.
 
 # Notes
+I usually use Refit to create API clients but I got feedback in the past that this was confusing and I thought I would stick with a more classic approach and used IHttpClientFactory instead.
 I spent a limited time on this API so I had to be a little pragmatic with how much I implemented but here are some other things I would have done if this was a real world API or I had more time:
 1. I would have implemented some form of security for my API (ApiKey or JWT token for example)
 2. Provide logging. 
